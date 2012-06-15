@@ -1,0 +1,50 @@
+﻿@model MvcApplication1.Controllers.MorceauRobot
+
+<div>
+	<ul id="listMorceau"></ul>
+</div>
+<div>
+	<form method="POST" action="/api/morceaurobotapi">
+		@Html.TextBoxFor(m => m.Nom)
+		@Html.TextBoxFor(m => m.Description)
+		@Html.TextBoxFor(m => m.Longueur)
+		<input type="submit" value="Ajouter" />
+	</form>
+</div>
+
+<script type="text/javascript">
+
+    (function ($) {
+        $.ajax({
+            url: '/api/morceaurobotapi',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                $.each(data, function (key, val) {
+
+                    var btnSupprimer = $('<a></a>').append("Supprimer").click(function() {
+                        $.ajax({
+                            url: '/api/morceaurobotapi/' + val.Id,
+                            type: 'DELETE',
+                            dataType: 'json',
+                            success: function() {
+                                alert('Morceau supprimé');
+                            },
+                            error: function () {
+                                alert('Morceau pas supprimé');
+                            }
+                        });
+                        return false;
+                    });
+
+                    var li = $('<li></li>').append(val.Nom + ', ' + val.Description + ', ' + val.Longueur).append(btnSupprimer);
+                    
+                    $('#listMorceau').append(li);
+                });
+            },
+            error: function () {
+                alert("Erreur ajax");
+            }
+        });
+    })(jQuery);
+</script>

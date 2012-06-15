@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcApplication1", "MvcApplication1\MvcApplication1.csproj", "{B51CB079-3264-4D6A-BCFC-83BB7A35909A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Tests", "WebApi.Tests\WebApi.Tests.csproj", "{DBFF9E09-7C5B-497E-A39D-3D12528AAE59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B51CB079-3264-4D6A-BCFC-83BB7A35909A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B51CB079-3264-4D6A-BCFC-83BB7A35909A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B51CB079-3264-4D6A-BCFC-83BB7A35909A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B51CB079-3264-4D6A-BCFC-83BB7A35909A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBFF9E09-7C5B-497E-A39D-3D12528AAE59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBFF9E09-7C5B-497E-A39D-3D12528AAE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBFF9E09-7C5B-497E-A39D-3D12528AAE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBFF9E09-7C5B-497E-A39D-3D12528AAE59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
