@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypeMorceauRobot", "PrototypeMorceauRobot\PrototypeMorceauRobot.csproj", "{3F0703F1-0173-496A-894D-718BEBB957D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypeMorceauRobot.Web", "PrototypeMorceauRobot.Web\PrototypeMorceauRobot.Web.csproj", "{3A6C2A94-AF71-4B99-B655-C61A27784748}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F0703F1-0173-496A-894D-718BEBB957D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0703F1-0173-496A-894D-718BEBB957D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0703F1-0173-496A-894D-718BEBB957D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0703F1-0173-496A-894D-718BEBB957D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A6C2A94-AF71-4B99-B655-C61A27784748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A6C2A94-AF71-4B99-B655-C61A27784748}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A6C2A94-AF71-4B99-B655-C61A27784748}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A6C2A94-AF71-4B99-B655-C61A27784748}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+		OpenWrap.VisualStudioIntegration2010 = 1;Ensures OpenWrap initialization when a solution is opened.;OpenWrap Visual Studio Solution Add-in
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MorceauRobot</title>
+
+    <script type="text/javascript" src="/Scripts/jquery-1.4.1.js"></script>
+</head>
+<body>
+    <div>
+	    <ul id="listMorceau"></ul>
+    </div>
+    <div>
+	    <form method="POST" action="/api/MorceauRobot">
+            Nom: <input type="text" id="Nom" name="Nom" />
+            Prenom: <input type="text" id="Description" name="Description" />
+            Longueur: <input type="text" id="Longueur" name="Longueur" />
+
+		    <input id="submitBtn" type="submit" value="Ajouter" />
+	    </form>
+    </div>
+
+    <script type="text/javascript">
+        (function ($) {
+            $('#submitBtn').click(function () {
+                $.ajax({
+                    url: '/api/MorceauRobot',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        Nom: $('#Nom').val(),
+                        Description: $('#Description').val(),
+                        Longueur: $('#Longueur').val()
+                    },
+                    success: function (data) {
+                        alert("Success");
+                    },
+                    error: function () {
+                        alert("Erreur ajax");
+                    }
+                });
+
+                return false;
+            });
+
+            $.ajax({
+                url: '/api/MorceauRobot',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $.each(data, function (key, val) {
+
+                        var btnSupprimer = $('<a href="#"></a>').append("Supprimer").click(function () {
+                            $.ajax({
+                                url: '/api/MorceauRobot/' + val.Id,
+                                type: 'DELETE',
+                                dataType: 'json',
+                                success: function () {
+                                    alert('Morceau supprimé');
+                                },
+                                error: function () {
+                                    alert('Morceau pas supprimé');
+                                }
+                            });
+                            return false;
+                        });
+
+                        var li = $('<li></li>').append(val.Nom + ', ' + val.Description + ', ' + val.Longueur).append(btnSupprimer);
+
+                        $('#listMorceau').append(li);
+                    });
+                },
+                error: function () {
+                    alert("Erreur ajax");
+                }
+            });
+        })(jQuery);
+    </script>
+</body>
+</html>
