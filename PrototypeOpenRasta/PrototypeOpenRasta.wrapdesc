@@ -2,3 +2,4 @@
 depends: openwrap anchored content
 depends: openrasta-full
 depends: simple.testing
+depends: openrasta-codecs-razor
