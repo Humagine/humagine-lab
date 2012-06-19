@@ -3,3 +3,6 @@ depends: openwrap anchored content
 depends: openrasta-full
 depends: simple.testing
 depends: openrasta-codecs-razor
+assembly-info: assembly-version
+assembly-info: file-version
+assembly-info: assembly-info
