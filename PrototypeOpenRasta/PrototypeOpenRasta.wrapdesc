@@ -1,4 +1,5 @@
 ﻿name: PrototypeOpenRasta
+build:msbuild
 depends: openwrap anchored content
 depends: openrasta-full
 depends: simple.testing

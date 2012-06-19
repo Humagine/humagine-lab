@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootStrap", "BootStrap\BootStrap.csproj", "{B9E7C9EE-0B15-43B8-B70E-CBE5E274F8FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9E7C9EE-0B15-43B8-B70E-CBE5E274F8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9E7C9EE-0B15-43B8-B70E-CBE5E274F8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9E7C9EE-0B15-43B8-B70E-CBE5E274F8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9E7C9EE-0B15-43B8-B70E-CBE5E274F8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+		OpenWrap.VisualStudioIntegration2010 = 1;Ensures OpenWrap initialization when a solution is opened.;OpenWrap Visual Studio Solution Add-in
+	EndGlobalSection
+EndGlobal
