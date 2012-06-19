@@ -1,6 +1,7 @@
 namespace PrototypeMorceauRobot.Web
 {
 	using System.Collections.Generic;
+	using OpenRasta.Codecs.Razor;
 	using OpenRasta.Configuration;
 	using PrototypeMorceauRobot.Web.Handlers;
 	using PrototypeMorceauRobot.Web.Resources;
@@ -10,17 +11,22 @@ namespace PrototypeMorceauRobot.Web
         public void Configure()
         {
             using (OpenRastaConfiguration.Manual)
-			{
-				ResourceSpace.Has.ResourcesOfType<IEnumerable<MorceauRobot>>()
-					.AtUri("/api/MorceauRobot")
-					.HandledBy<MorceauRobotHandler>()
-					.AsJsonDataContract();
+            {
+            	ResourceSpace.Has.ResourcesOfType<IEnumerable<MorceauRobot>>()
+            		.AtUri("/api/MorceauRobot")
+            		.HandledBy<MorceauRobotHandler>()
+            		.AsJsonDataContract();
 
+            	ResourceSpace.Has.ResourcesOfType<MorceauRobot>()
+            		.AtUri("/api/MorceauRobot/{id}")
+            		.HandledBy<MorceauRobotHandler>()
+            		.AsJsonDataContract();
+            	/*
 				ResourceSpace.Has.ResourcesOfType<MorceauRobot>()
-					.AtUri("/api/MorceauRobot/{id}")
+					.AtUri("/view/MorceauRobot/{id}")
 					.HandledBy<MorceauRobotHandler>()
-					.AsJsonDataContract();
-			}
+					.RenderedByRazor("~/Views/MorceauRobot.cshtml");*/
+            }
         }
     }
 }
