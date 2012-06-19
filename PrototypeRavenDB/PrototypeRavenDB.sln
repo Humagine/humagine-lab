@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrototypeRavenDB", "PrototypeRavenDB\PrototypeRavenDB.csproj", "{B6EE2ACC-ACCF-44A3-8EEB-CD01F6F1F9FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6EE2ACC-ACCF-44A3-8EEB-CD01F6F1F9FB}.Debug|x86.ActiveCfg = Debug|x86
+		{B6EE2ACC-ACCF-44A3-8EEB-CD01F6F1F9FB}.Debug|x86.Build.0 = Debug|x86
+		{B6EE2ACC-ACCF-44A3-8EEB-CD01F6F1F9FB}.Release|x86.ActiveCfg = Release|x86
+		{B6EE2ACC-ACCF-44A3-8EEB-CD01F6F1F9FB}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
