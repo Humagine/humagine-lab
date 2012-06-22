@@ -23,6 +23,42 @@
 
     <script type="text/javascript">
         (function ($) {
+            function updateList() {
+                $.ajax({
+                    url: '/api/MorceauRobot',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        $('#listMorceau').empty();
+
+                        $.each(data, function (key, val) {
+                            var btnSupprimer = $('<a href="#"></a>').append("Supprimer").click(function () {
+                                $.ajax({
+                                    url: '/api/MorceauRobot/' + val.Id,
+                                    type: 'DELETE',
+                                    dataType: 'json',
+                                    success: function () {
+                                        alert('Morceau supprimé');
+                                        updateList();
+                                    },
+                                    error: function () {
+                                        alert('Morceau pas supprimé');
+                                    }
+                                });
+                                return false;
+                            });
+
+                            var li = $('<li></li>').append(val.Nom + ', ' + val.Description + ', ' + val.Longueur).append(btnSupprimer);
+
+                            $('#listMorceau').append(li);
+                        });
+                    },
+                    error: function () {
+                        alert("Erreur ajax");
+                    }
+                });
+            }
+
             $('#submitBtn').click(function () {
                 $.ajax({
                     url: '/api/MorceauRobot',
@@ -35,6 +71,7 @@
                     },
                     success: function (data) {
                         alert("Success");
+                        updateList();
                     },
                     error: function () {
                         alert("Erreur ajax");
@@ -44,37 +81,7 @@
                 return false;
             });
 
-            $.ajax({
-                url: '/api/MorceauRobot',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    $.each(data, function (key, val) {
-
-                        var btnSupprimer = $('<a href="#"></a>').append("Supprimer").click(function () {
-                            $.ajax({
-                                url: '/api/MorceauRobot/' + val.Id,
-                                type: 'DELETE',
-                                dataType: 'json',
-                                success: function () {
-                                    alert('Morceau supprimé');
-                                },
-                                error: function () {
-                                    alert('Morceau pas supprimé');
-                                }
-                            });
-                            return false;
-                        });
-
-                        var li = $('<li></li>').append(val.Nom + ', ' + val.Description + ', ' + val.Longueur).append(btnSupprimer);
-
-                        $('#listMorceau').append(li);
-                    });
-                },
-                error: function () {
-                    alert("Erreur ajax");
-                }
-            });
+            updateList();
         })(jQuery);
     </script>
 </body>
