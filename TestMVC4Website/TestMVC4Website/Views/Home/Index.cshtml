@@ -15,15 +15,42 @@
         @Html.HiddenFor(m => m.Y)
         @Html.HiddenFor(m => m.Width)
         @Html.HiddenFor(m => m.Height)
-		<img src="https://www.humagine.com/img/logo-humagine-big.png" id="logo" alt=""/>
-        <input type="submit" value="Submit"/>
+        @Html.HiddenFor(m => m.Ratio, new { value = 1 })
+		<div style="text-align: center">
+			<img src="https://www.humagine.com/img/logo-humagine-big.png" id="logo" alt=""/>
+		</div>
+		<div>
+			<input type="submit" value="Submit"/>
+		</div>
 	}
-
 </div>
 
 @section scripts
 {
 	<script type="text/javascript">
+	    var jcrop_api;
+
+	    function enableJcrop() {
+	        jcrop_api.enable();
+	    }
+
+	    function enableResize() {
+	        $('#logo').resizable("enable");
+	    }
+
+	    function disableJcrop() {
+	        jcrop_api.disable();
+	    }
+
+	    function disableResize() {
+	        $('#logo').resizable("disable");
+	    }
+
+	    function jcropChange(c) {
+	        disableResize();
+	        setCoordinates(c);
+	    }
+
 	    function setCoordinates(c) {
 	        $('#@Html.IdFor(m => m.X)').val(c.x);
 	        $('#@Html.IdFor(m => m.Y)').val(c.y);
@@ -31,12 +58,28 @@
 	        $('#@Html.IdFor(m => m.Width)').val(c.w);
 	    }
 
-	    $(function() {
+	    $(function () {
 	        $('#logo').Jcrop({
-	            onSelect: setCoordinates,
-	            onChange: setCoordinates,
-	            bgColor: 'transparent'
+	                onSelect: jcropChange,
+	                onChange: jcropChange,
+	                onRelease: enableResize,
+	                bgColor: 'transparent'
+	            }, function() {
+	                jcrop_api = this;
+	            });
+
+	        $('.jcrop-tracker ~ img').resizable({
+	            aspectRatio: true,
+	            alsoResize: $('#logo'),
+	            start: disableJcrop,
+	            stop: enableJcrop,
+	            resize: function (e, ui) {
+	                $('.jcrop-tracker, .jcrop-holder > div').css({ width: ui.size.width, height: ui.size.height });
+	                $('img').css({ width: ui.size.width, height: ui.size.height });
+	                var ratio = ui.size.width / ui.originalSize.width;
+	                $('#@Html.IdFor(m => m.Ratio)').val(ratio);
+	            }
 	        });
-	    })
+	    });
 	</script>
 }
