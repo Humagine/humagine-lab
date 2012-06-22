@@ -1,7 +1,6 @@
 namespace PrototypeMorceauRobot.Web
 {
 	using System.Collections.Generic;
-	using OpenRasta.Codecs.Razor;
 	using OpenRasta.Configuration;
 	using PrototypeMorceauRobot.Web.Handlers;
 	using PrototypeMorceauRobot.Web.Resources;
