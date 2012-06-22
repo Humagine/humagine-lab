@@ -1,5 +1,6 @@
 ﻿namespace TestMVC4Website.Controllers
 {
+	using System;
 	using System.Drawing;
 	using System.Drawing.Imaging;
 	using System.IO;
@@ -21,19 +22,18 @@
 		{
 			using (var client = new WebClient())
 			{
-				//var imageBytes = client.DownloadData("https://www.humagine.com/img/logo-humagine-big.png");
-				var imageBytes = client.DownloadData("http://freeimagesarchive.com/data/media/8/5_images.jpg");
+				var imageBytes = client.DownloadData("https://www.humagine.com/img/logo-humagine-big.png");
 
 				using (var image = Image.FromStream(new MemoryStream(imageBytes)))
 				{
 					using (var crop = imageCropper.Crop(image, imageData.X, imageData.Y, imageData.Width, imageData.Height))
 					{
-						crop.Save("patate.png", ImageFormat.Png);
+						var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "patate.png");
+						crop.Save(path, ImageFormat.Png);
+						return File(path, "image/png");
 					}
 				}
 			}
-
-			return RedirectToAction("Index");
 		}
 	}
 
