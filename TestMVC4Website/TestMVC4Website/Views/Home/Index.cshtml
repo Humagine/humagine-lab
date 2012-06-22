@@ -1,0 +1,42 @@
+﻿@model TestMVC4Website.Controllers.ImageData
+
+<header>
+	<div class="content-wrapper">
+		<div class="float-left">
+			<p class="site-title">
+				<a href="~/">ASP.NET Web API</a></p>
+		</div>
+	</div>
+</header>
+<div id="body">
+	@using (Html.BeginForm("CropImage", "Home"))
+	{
+        @Html.HiddenFor(m => m.X)
+        @Html.HiddenFor(m => m.Y)
+        @Html.HiddenFor(m => m.Width)
+        @Html.HiddenFor(m => m.Height)
+		<img src="https://www.humagine.com/img/logo-humagine-big.png" id="logo" alt=""/>
+        <input type="submit" value="Submit"/>
+	}
+
+</div>
+
+@section scripts
+{
+	<script type="text/javascript">
+	    function setCoordinates(c) {
+	        $('#@Html.IdFor(m => m.X)').val(c.x);
+	        $('#@Html.IdFor(m => m.Y)').val(c.y);
+	        $('#@Html.IdFor(m => m.Height)').val(c.h);
+	        $('#@Html.IdFor(m => m.Width)').val(c.w);
+	    }
+
+	    $(function() {
+	        $('#logo').Jcrop({
+	            onSelect: setCoordinates,
+	            onChange: setCoordinates,
+	            bgColor: 'transparent'
+	        });
+	    })
+	</script>
+}
