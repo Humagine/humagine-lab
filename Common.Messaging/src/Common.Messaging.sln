@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Messaging", "Common.Messaging\Common.Messaging.csproj", "{653E5E2B-01F3-4F43-A72D-820E7DB23DDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Messaging.Core", "Common.Messaging.Core\Common.Messaging.Core.csproj", "{447217A0-A662-499D-B144-9BCC7584F7C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Messaging.EventStore", "Common.Messaging.EventStore\Common.Messaging.EventStore.csproj", "{CA018E23-0983-4E86-83A5-A4CFA4DC24DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{691CEB89-31C5-412B-A5D2-774C6132B88C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Messaging.UnitTests", "Common.Messaging.UnitTests\Common.Messaging.UnitTests.csproj", "{2D3BF25F-9424-425C-8232-D9858C571E29}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{653E5E2B-01F3-4F43-A72D-820E7DB23DDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653E5E2B-01F3-4F43-A72D-820E7DB23DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653E5E2B-01F3-4F43-A72D-820E7DB23DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653E5E2B-01F3-4F43-A72D-820E7DB23DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447217A0-A662-499D-B144-9BCC7584F7C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447217A0-A662-499D-B144-9BCC7584F7C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447217A0-A662-499D-B144-9BCC7584F7C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447217A0-A662-499D-B144-9BCC7584F7C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA018E23-0983-4E86-83A5-A4CFA4DC24DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA018E23-0983-4E86-83A5-A4CFA4DC24DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA018E23-0983-4E86-83A5-A4CFA4DC24DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA018E23-0983-4E86-83A5-A4CFA4DC24DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D3BF25F-9424-425C-8232-D9858C571E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D3BF25F-9424-425C-8232-D9858C571E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D3BF25F-9424-425C-8232-D9858C571E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D3BF25F-9424-425C-8232-D9858C571E29}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2D3BF25F-9424-425C-8232-D9858C571E29} = {691CEB89-31C5-412B-A5D2-774C6132B88C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+		OpenWrap.VisualStudioIntegration2010 = 1;Ensures OpenWrap initialization when a solution is opened.;OpenWrap Visual Studio Solution Add-in
+	EndGlobalSection
+EndGlobal

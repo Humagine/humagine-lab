@@ -1,0 +1,6 @@
+﻿name: Common.Messaging
+depends: openwrap anchored content
+depends: EventStore
+depends: CommonDomain
+depends: Castle.Windsor
+depends: Machine.Specifications >= 0.5.7
