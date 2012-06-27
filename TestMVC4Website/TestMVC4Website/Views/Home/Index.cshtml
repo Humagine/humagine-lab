@@ -3,22 +3,31 @@
 <header>
 	<div class="content-wrapper">
 		<div class="float-left">
-			<p class="site-title">
-				<a href="~/">ASP.NET Web API</a></p>
+			<p class="site-title">Prototype image resizer</p>
 		</div>
 	</div>
 </header>
 <div id="body">
+	
+	<div id="template-area">
+		<div class="edit-area wraptocenter">
+			<span></span>
+			<img id="resize-target" src="~/Content/logo-humagine-big.png" alt="" />
+		</div>
+	</div>
+
+	<div id="preview-wrapper" style="width:150px; height:100px; overflow:hidden; border:1px solid #000; background-color: #fff;">
+		<img id="preview" src="~/Content/logo-humagine-big.png" alt=""/>
+	</div>
+
 	@using (Html.BeginForm("CropImage", "Home"))
 	{
-        @Html.HiddenFor(m => m.X)
-        @Html.HiddenFor(m => m.Y)
-        @Html.HiddenFor(m => m.Width)
-        @Html.HiddenFor(m => m.Height)
-        @Html.HiddenFor(m => m.Ratio, new { value = 1 })
-		<div style="text-align: center">
-			<img src="https://www.humagine.com/img/logo-humagine-big.png" id="logo" alt=""/>
-		</div>
+		@Html.HiddenFor(m => m.X)
+		@Html.HiddenFor(m => m.Y)
+		@Html.HiddenFor(m => m.Width)
+		@Html.HiddenFor(m => m.Height)
+		@Html.HiddenFor(m => m.Ratio, new { value = 1 })
+	    
 		<div>
 			<input type="submit" value="Submit"/>
 		</div>
@@ -27,59 +36,102 @@
 
 @section scripts
 {
+	<style type="text/css">
+	    .edit-area {
+	        border: 1px solid #000;
+            background-color:#fff;
+            width: 500px;
+	        height: 500px;
+            overflow: hidden;
+	    }
+        
+        .wraptocenter {
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .wraptocenter * {
+            vertical-align: middle;
+        }
+        /*\*//*/
+        .wraptocenter {
+            display: block;
+        }
+        .wraptocenter span {
+            display: inline-block;
+            height: 100%;
+            width: 1px;
+        }
+        /**/
+	</style>
+    <!--[if lt IE 8]><style>
+        .wraptocenter span {
+            display: inline-block;
+            height: 100%;
+        }
+    </style><![endif]-->
+    
+
 	<script type="text/javascript">
-	    var jcrop_api;
-
-	    function enableJcrop() {
-	        jcrop_api.enable();
-	    }
-
-	    function enableResize() {
-	        $('#logo').resizable("enable");
-	    }
-
-	    function disableJcrop() {
-	        jcrop_api.disable();
-	    }
-
-	    function disableResize() {
-	        $('#logo').resizable("disable");
-	    }
-
-	    function jcropChange(c) {
-	        disableResize();
-	        setCoordinates(c);
-	    }
-
-	    function setCoordinates(c) {
-	        $('#@Html.IdFor(m => m.X)').val(c.x);
-	        $('#@Html.IdFor(m => m.Y)').val(c.y);
-	        $('#@Html.IdFor(m => m.Height)').val(c.h);
-	        $('#@Html.IdFor(m => m.Width)').val(c.w);
-	    }
-
+	    
 	    $(function () {
-	        $('#logo').Jcrop({
-	                onSelect: jcropChange,
-	                onChange: jcropChange,
-	                onRelease: enableResize,
-	                bgColor: 'transparent'
-	            }, function() {
-	                jcrop_api = this;
-	            });
+	        
+	        var jcrop_api;
 
-	        $('.jcrop-tracker ~ img').resizable({
-	            aspectRatio: true,
-	            alsoResize: $('#logo'),
-	            start: disableJcrop,
-	            stop: enableJcrop,
-	            resize: function (e, ui) {
-	                $('.jcrop-tracker, .jcrop-holder > div').css({ width: ui.size.width, height: ui.size.height });
-	                $('img').css({ width: ui.size.width, height: ui.size.height });
-	                var ratio = ui.size.width / ui.originalSize.width;
-	                $('#@Html.IdFor(m => m.Ratio)').val(ratio);
-	            }
+	        function showPreview(coords) {
+	            var $image = $('#resize-target');
+	            var $area = $('#template-area');
+	            var $previewWrapper = $('#preview-wrapper');
+
+	            var halfImageWidth = Math.round($image.width() / 2); //inner width/height ?
+	            var halfImageHeight = Math.round($image.height() / 2);
+
+	            var areaCoordX = -Math.round($area.width() / 2); //inner width/height ?
+	            var areaCoordY = -Math.round($area.height() / 2);
+
+	            var cropX = areaCoordX + halfImageWidth + coords.x;
+	            var cropY = areaCoordY + halfImageHeight + coords.y;
+
+	            var rx = $previewWrapper.width() / coords.w; //inner width/height ?
+	            var ry = $previewWrapper.height() / coords.h;
+
+	            var previewWidth = Math.round(rx * $('#resize-target').width()) + 'px';
+	            var previewHeight = Math.round(ry * $('#resize-target').height()) + 'px';
+	            var previewLeft = (-Math.round(rx * cropX)) + 'px';
+	            var previewTop = (-Math.round(ry * cropY)) + 'px';
+
+	            $('#preview').css({
+	                width: previewWidth,
+	                height: previewHeight,
+	                left: previewLeft,
+	                top: previewTop,
+	                position: 'relative'
+	            });
+	        }
+
+	        function setCoordinates(coords) {
+	            $('#@Html.IdFor(m => m.X)').val(coords.x);
+	            $('#@Html.IdFor(m => m.Y)').val(coords.y);
+	            $('#@Html.IdFor(m => m.Height)').val(coords.h);
+	            $('#@Html.IdFor(m => m.Width)').val(coords.w);
+	        }
+
+	        function jcropChange(c) {
+	            setCoordinates(c);
+	            showPreview(c);
+	        }
+
+	        $('#template-area').Jcrop({
+	            aspectRatio: 1.5,
+	            onSelect: jcropChange,
+	            onChange: jcropChange,
+	            bgColor: 'transparent',
+	            setSelect: [0, 0, 150, 100]
+	        }, function () {
+	            jcrop_api = this;
 	        });
 	    });
+
+
 	</script>
 }
