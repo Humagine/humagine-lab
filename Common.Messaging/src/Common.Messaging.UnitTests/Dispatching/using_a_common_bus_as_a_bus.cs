@@ -6,7 +6,7 @@ namespace Common.Messaging.UnitTests.Dispatching
 	using Messaging.Dispatching;
 
 	[Subject(typeof (CommonBus))]
-	public class using_a_common_bus_as_a_bus : using_an_ioc_container 
+	public class using_a_common_bus_as_a_bus : using_an_ioc_container
 	{
 		protected static ICommonBus bus;
 
