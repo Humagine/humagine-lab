@@ -26,4 +26,4 @@ namespace TestMVC4Website
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
 	}
-} 
+}
