@@ -1,0 +1,16 @@
+﻿@model PrototypeHumaginePageModel.Models.RegisterViewModel
+
+@{
+   System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+}
+
+<h2>Register</h2>
+
+<pre>
+@Html.Raw(serializer.Serialize(Model.Command))
+</pre>
+
+<form action="/RegisterCommand/PostCommand" method="POST">
+	<input type="hidden" name="registrationId" value="@Model.RegistrationId" />
+    <input type="submit" value="Register" />
+</form>

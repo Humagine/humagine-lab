@@ -1,0 +1,19 @@
+﻿@model PrototypeHumaginePageModel.Models.PageViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+	<title>@Model.Title</title>
+    
+    @RenderSection("HeaderLinks", false)
+
+</head>
+	<body>
+        @Html.Partial("_HeaderView", Model)
+
+		@RenderBody()
+        
+		@Html.Partial("_FooterView")
+	</body>
+</html>

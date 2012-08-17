@@ -1,0 +1,19 @@
+﻿@model PrototypeHumaginePageModel.Models.PageViewModel
+
+<div>
+	<ul>
+		<li>@Html.ActionLink("Register", "Index", "Register")</li>
+		<li>@Html.ActionLink("Personality Test", "Index", "PersonalityTest")</li>
+	</ul>
+</div>
+
+<div>
+	@if (Model.IsAuthenticated)
+	{
+		@Html.ActionLink("Logout", "Index", "Logout")
+	}
+	else
+	{
+		@Html.ActionLink("Login", "Index", "Login")
+	}
+</div>
