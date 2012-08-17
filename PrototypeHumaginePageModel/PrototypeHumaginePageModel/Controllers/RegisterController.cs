@@ -4,7 +4,7 @@
 	using System.Web.Mvc;
 	using PrototypeHumaginePageModel.Models;
 
-	public class RegisterController : BasePageController<PageViewModel>
+	public class RegisterController : BasePageController<PageModel>
     {
         public ActionResult Index()
         {
@@ -15,7 +15,7 @@
 		{
 			if (ControllerContext.HttpContext.Session["authenticated"] != null)
 			{
-				viewModel = new PageViewModel
+				viewModel = new PageModel
 				            	{
 				            		Title = "Already registered"
 				            	};
@@ -25,7 +25,7 @@
 
 			if (RegistrationRepository.IsRegistered(registrationId))
 			{
-				viewModel = new PageViewModel
+				viewModel = new PageModel
 				            	{
 				            		Title = "Waiting activation"
 				            	};
@@ -33,11 +33,13 @@
 				return View("WaitingActivation", viewModel);
 			}
 
-			var registerPageViewModel = new RegisterViewModel
+			var registerPageViewModel = new RegisterPageModel
 			{
 				Title = "Register",
-				Command = new RegisterCommand(),
-				RegistrationId = registrationId,
+				Command = new RegisterCommand
+				          	{
+								RegistrationId = registrationId
+				          	}
 			};
 
 			viewModel = registerPageViewModel;

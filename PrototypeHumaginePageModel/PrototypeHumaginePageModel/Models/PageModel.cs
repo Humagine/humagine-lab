@@ -1,14 +1,13 @@
 namespace PrototypeHumaginePageModel.Models
 {
-	public class PageViewModel : ViewModel
+	public class PageModel
 	{
-		public PageViewModel()
+		public PageModel()
 		{
 			Title = "";
 		}
 
 		public string Title { get; set; }
-
 		public bool IsAuthenticated { get; set; }
 	}
 }

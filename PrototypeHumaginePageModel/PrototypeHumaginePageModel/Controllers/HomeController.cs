@@ -3,11 +3,11 @@
 	using System.Web.Mvc;
 	using PrototypeHumaginePageModel.Models;
 
-	public class HomeController : BasePageController<PageViewModel>
+	public class HomeController : BasePageController<PageModel>
     {
         public ActionResult Index()
         {
-			viewModel = new PageViewModel();
+			viewModel = new PageModel();
             return View(viewModel);
         }
     }

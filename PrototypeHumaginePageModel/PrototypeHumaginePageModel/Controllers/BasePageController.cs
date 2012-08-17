@@ -3,7 +3,7 @@ namespace PrototypeHumaginePageModel.Controllers
 	using System.Web.Mvc;
 	using PrototypeHumaginePageModel.Models;
 
-	public abstract class BasePageController<T> : Controller where T : PageViewModel, new()
+	public abstract class BasePageController<T> : Controller where T : PageModel, new()
 	{
 		protected T viewModel;
 

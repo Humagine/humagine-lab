@@ -1,16 +1,40 @@
-﻿@model PrototypeHumaginePageModel.Models.RegisterViewModel
+﻿@model PrototypeHumaginePageModel.Models.RegisterPageModel
 
 @{
-   System.Web.Script.Serialization.JavaScriptSerializer serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+   var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
 }
 
 <h2>Register</h2>
 
 <pre>
-@Html.Raw(serializer.Serialize(Model.Command))
+    @Html.Raw(serializer.Serialize(Model.Command))
 </pre>
 
-<form action="/RegisterCommand/PostCommand" method="POST">
-	<input type="hidden" name="registrationId" value="@Model.RegistrationId" />
-    <input type="submit" value="Register" />
+<form id="form" action="/api/WebApiCommand" method="POST">
+	<input type="hidden" id="RegistrationId" name="RegistrationId" value="@Model.Command.RegistrationId" />
+	<input type="submit" id="submit" value="Register" />
 </form>
+
+<script type="text/javascript">
+    /*$(function () {
+
+        $('#submit').click(function () {
+
+            $.ajax({
+                url: "/api/WebApiCommand",
+                type: "POST",
+                data: { RegistrationId: $('#RegistrationId').val() },
+                dataType: "text",
+                success: function (data, textStatus, jqXHR) {
+                    alert(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("error: " + textStatus);
+                }
+            });
+
+            return false;
+        });
+
+    });*/
+</script>

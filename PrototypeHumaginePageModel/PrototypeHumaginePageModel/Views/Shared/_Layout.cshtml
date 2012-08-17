@@ -1,4 +1,4 @@
-﻿@model PrototypeHumaginePageModel.Models.PageViewModel
+﻿@model PrototypeHumaginePageModel.Models.PageModel
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width" />
 	<title>@Model.Title</title>
     
-    @RenderSection("HeaderLinks", false)
+    <script type="text/javascript" src="~/Scripts/jquery-1.6.2.min.js"></script>
+
+	@RenderSection("HeaderLinks", false)
 
 </head>
 	<body>
